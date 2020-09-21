@@ -1,56 +1,42 @@
-# Kickstarting with Excel
+# Stock Analysis with VBA
 
 ## Overview of Project
-* This is an analysis of Kickstarter campaign data.
+* This is an aggregation of performance data of 12 stock symbols for 2017-2018 using VBA.
 
 ### Purpose
-* The purpose of this project is to analyze various attributes of Kickstarter campaigns to understand if there are any indicators of success/failure.
-
-## Analysis and Challenges
-
-### Analysis of Outcomes Based on Launch Date
-* For this portion of the analysis, the launch date and end date for each campaign had to be converted into a readable data format via a formula in Excel. The Category/Subcategory field also had to be split into two separate fields for proper grouping using Excel's "Text to Columns" feature
-
-* After converting the dates into the correct format, a Pivot Table was used to aggregate the campaigns into the month in which the campaign was created. The intent was to compare the number of successful and failed campaigns by the month they launched in and observe any trends. 
-
-### Challenges and Difficulties Encountered
-
-* There were no challenges faced in this particular analysis, but one potential challenge could have been if the data had large spikes in certain months but not an overall trend. This could have occured if the data set was smaller (such as only having data for one year). This could lead to uncertainty about whether a particular month is best/worst to launch a campaign because one would not expect high/low months to be adjacent. 
-
-* For example: the chart below would be the result if only 2011-2012 data were used, where April and November appear to be the best months, which does not match the overall trend outlined in the results section. There were also no failures in these two years, so the success rate (%) would actually appear to be 100%.
-
-![alt text](https://github.com/XZandermarsh/Kickstarter_Challenge/blob/master/resources/Results%20by%20Start%20Month%202011%202012.png "Theater Outcomes vs Launch Date (2011-2012)")
-
-### Analysis of Outcomes Based on Goals
-
-* For this portion of the analysis, a new sheet was created with some goal ranges and formula fields, such as Number Successful, Number Failed, and Number Cancelled, as well as the percentage for each result as a part of the total projects within that goal range.
-
-* The next step was to use the COUNTIF function to count the number of campaigns with each result within each goal range. These results were then converted into percentages for ease of comparison between the ranges.
-
-* Finally, we were asked to create a line chart with percentage of success and failure based on goal.
-
-### Challenges and Difficulties Encountered
-
-* Challenges with this portion of analysis include using the structure and syntax of the COUNTIF function correctly. After the formula was filled out as instructed, I realized that the quantities did not match the example given in the instructions. After investigating, the formulas needed to use the ">=" and "<=" signs, not ">" and "<". After correcting this error, the data and chart matched the instructions.
+* The purpose of this project is to utilize VBA code (macros) to automate aggregating and summarizing stock performance from a large raw data set.
 
 ## Results
 
-### Outcomes Based on Launch Date
-* The data suggests that May has the highest number of successful Kickstarter campaigns, with June being a close second.
-* December had by far the lowest number of successful campaigns.
-* This trend is present for the overall data, and also within the Theater parent category, as you can see by the two charts below:
+### Stock Performance: 2017 vs 2018
+* Overall, the general trend was that stocks performed much better in 2017 vs 2018. 10 of the 12 stock symbols (tickers) performed better in 2017. The only two symbols which did worse in 2017 were RUN and TERP. 
 
-![alt text](https://github.com/XZandermarsh/Kickstarter_Challenge/blob/master/resources/All_Outcomes_vs_Launch_2.png "All Outcomes vs Launch Date")
-![alt text](https://github.com/XZandermarsh/Kickstarter_Challenge/blob/master/resources/Theater_Outcomes_vs_Launch.png "Theater Outcomes vs Launch Date")
+![alt text](https://github.com/XZandermarsh/stock-analysis/blob/master/Resources/VBA_Challenge_2017_Original_Results.png "2017 Results")
+
+![alt text](https://github.com/XZandermarsh/stock-analysis/blob/master/Resources/VBA_Challenge_2018_Original_Results.png "2018 Results")
+
+* In terms of individual stock performance (return) in 2017, the top symbol was DQ with a 199.4% return, and the bottom symbol was TERP with a -7.2% return (loss). 
+
+* For 2018, the top performing stock was RUN with 83.95% return. The worst performer in 2018 was DQ with a -62.6% return (loss).
+
+### Refactoring & Impact On Program Runtime
+* The original code ran in 0.773s for 2017 data and 0.699s for 2018, as shown in the screenshots below:
+![alt text](https://github.com/XZandermarsh/stock-analysis/blob/master/Resources/VBA_Challenge_2017_Original_Time.png "2017 Original Runtime")
+![alt text](https://github.com/XZandermarsh/stock-analysis/blob/master/Resources/VBA_Challenge_2018_Original_Time.png "2018 Original Runtime")
+
+* After refactoring the program, it ran in 0.121s for 2017 and 0.121s for 2018, as shown below:
+
+![alt text](https://github.com/XZandermarsh/stock-analysis/blob/master/Resources/VBA_Challenge_2017_Refactored_Time.png "2017 Refactored Runtime")
+
+![alt text](https://github.com/XZandermarsh/stock-analysis/blob/master/Resources/VBA_Challenge_2018_Refactored_Time.png "2018 Refactored Runtime")
+
+* This represents an 84% improvement (reduction) for 2017, and an 83% improvement (reduction) for 2018.
+## Summary
+* Refactoring aims to improve the efficiency of a program's internal code while keeping the external functionality intact. The advantage of this activity can be many, but two primary benefits are speed and maintainability. Refactoring often involves improving the flow of a program, cutting out redundancies or finding more efficient and/or elegant methods for accomplishing the same goal. This can result in less resources required by the computer running the program, and may even make the code easier to follow and maintain for the user or others.
+
+* The disadvantages of refactoring are the intoduction of new bugs, and additional time required for less apparent value added. Depending on the complexity of original code, there is not always a benefit to refactoring, as changing the structure of the program could break it in unforseen ways, which could require additional bugs that were not rpesent in the original code. 
+
+* In the case of this program, there was a specific reason for why refactoring might be beneficial. Namely, that the tool could be used in the future for larger data sets. If it was known that the program would only ever be needed for this source data, refactoring may not have been worth the additional time input. However, the use cases for a program or section of code is not always known at the time of creation, so it is beneficial to refactor in preparation for the code's use in the future. Also, there is a measureable improvement in speed which was gained purely from refactoring. Even with the relatively small data set being analyzed, there was a substantial decrease in program run time after refactoring. It is reasonable to assume that the benefit to runtime would become even more substantial if measured between larger data sets, which was the reason given in the challenge.
 
 
-### Outcomes Based on Goals
-
-* The data suggests that there is not a strong correlation between the initial goal and the overall success of the campaign. As seen by the chart below, there appears to be a slight negative correlation between goal and success rate for campaigns under $25k, but there is another peak for campaigns in the $35k to $45k goal range. However, upon closer inspection, there are far fewer data points available as the goal increases. For example, there are 1005 total projects with goals less than $25k, but there are only 42 projects with goals at $25k or greater. This means that the succes rate seen at the $35k to $45k range may have a much larger margin for error than the lower goal ranges. More data in the higher ranges would be needed to fully draw a conclusion on this question.
-
-![alt text](https://github.com/XZandermarsh/Kickstarter_Challenge/blob/master/resources/Outcomes_vs_Goals.png "Outcomes vs Goals")
-
-* The chart below shows the total projects as a function of the goal. As mentioned above, the number of campaigns tend to decrease above the $5000 mark, to the point where we cannot draw conclusions from the success rate as the sample size decreases. 
-
-![alt text](https://github.com/XZandermarsh/Kickstarter_Challenge/blob/master/resources/Total_Projects_vs_Goal.png "Total Projects vs Goals")
 
