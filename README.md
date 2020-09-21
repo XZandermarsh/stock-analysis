@@ -12,7 +12,6 @@
 * Overall, the general trend was that stocks performed much better in 2017 vs 2018. 10 of the 12 stock symbols (tickers) performed better in 2017. The only two symbols which did worse in 2017 were RUN and TERP. 
 
 ![alt text](https://github.com/XZandermarsh/stock-analysis/blob/master/Resources/VBA_Challenge_2017_Original_Results.png "2017 Results")
-
 ![alt text](https://github.com/XZandermarsh/stock-analysis/blob/master/Resources/VBA_Challenge_2018_Original_Results.png "2018 Results")
 
 * In terms of individual stock performance (return) in 2017, the top symbol was DQ with a 199.4% return, and the bottom symbol was TERP with a -7.2% return (loss). 
