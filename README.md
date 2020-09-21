@@ -24,13 +24,27 @@
 ![alt text](https://github.com/XZandermarsh/stock-analysis/blob/master/Resources/VBA_Challenge_2017_Original_Time.png "2017 Original Runtime")
 ![alt text](https://github.com/XZandermarsh/stock-analysis/blob/master/Resources/VBA_Challenge_2018_Original_Time.png "2018 Original Runtime")
 
-* After refactoring the program, it ran in 0.121s for 2017 and 0.121s for 2018, as shown below:
+* After refactoring the program, it ran in ~0.1s for 2017 and 2018, as shown below:
 
 ![alt text](https://github.com/XZandermarsh/stock-analysis/blob/master/Resources/VBA_Challenge_2017_Refactored_Time.png "2017 Refactored Runtime")
-
 ![alt text](https://github.com/XZandermarsh/stock-analysis/blob/master/Resources/VBA_Challenge_2018_Refactored_Time.png "2018 Refactored Runtime")
 
-* This represents an 84% improvement (reduction) for 2017, and an 83% improvement (reduction) for 2018.
+* This represents an 88% improvement (reduction) for 2017, and an 85% improvement (reduction) for 2018. 
+
+* The refactoring was performed by changing the way the program flowed through the for loops. In the initial program, the nested for loop calculated the total volume, start price, and end price of a given ticker, then wrote those results to the analysis sheet, then looped into the next ticker. This solution worked, but required the program to switch back and forth between sheets for each ticker, which added time to the program. 
+
+
+* After refactoring, the program used an array to store all the results, then used a separate for loop to write the results directly from the array. This only required the program to change sheets once, instead of back and forth 12 times. In the first screenshot below, the original code has the both sheet activations inside a for loop. In the refactored version, the activate sheet commands have been placed outside the for loop, so they are only called once each.
+
+* Original Code
+
+![alt text](https://github.com/XZandermarsh/stock-analysis/blob/master/Resources/VBA_Challenge_Original_Code.png "Original Code")
+
+* Refactored Code
+
+![alt text](https://github.com/XZandermarsh/stock-analysis/blob/master/Resources/VBA_Challenge_Refactored_Code.png "Refactored Code")
+
+
 ## Summary
 * Refactoring aims to improve the efficiency of a program's internal code while keeping the external functionality intact. The advantage of this activity can be many, but two primary benefits are speed and maintainability. Refactoring often involves improving the flow of a program, cutting out redundancies or finding more efficient and/or elegant methods for accomplishing the same goal. This can result in less resources required by the computer running the program, and may even make the code easier to follow and maintain for the user or others.
 
